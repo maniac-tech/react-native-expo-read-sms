@@ -1,4 +1,9 @@
-import { NativeModules } from "react-native";
+import {
+  NativeEventEmitter,
+  NativeModules,
+  PermissionsAndroid,
+  Platform,
+} from "react-native";
 
 const { RNExpoReadSms } = NativeModules;
 
