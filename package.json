@@ -8,7 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "sms",
+    "read sms",
+    "android sms"
   ],
   "author": "Abhishek Jain",
   "license": "MIT",
