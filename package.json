@@ -1,4 +1,3 @@
-
 {
   "name": "@maniac-tech/react-native-expo-read-sms",
   "version": "1.0.4",
@@ -17,5 +16,9 @@
   "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maniac-tech/expo-read-sms.git"
   }
 }
