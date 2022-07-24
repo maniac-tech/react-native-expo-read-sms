@@ -39,7 +39,7 @@ export async function startReadSMS(callback) {
   }
 }
 
-const hasSMSPermission = async () => {
+export const hasSMSPermission = async () => {
   if (Platform.OS === "android" && Platform.Version < 23) {
     return true;
   }
