@@ -1,6 +1,6 @@
 {
   "name": "@maniac-tech/react-native-expo-read-sms",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Library to read incoming SMS in Android for Expo (React Native)",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maniac-tech/expo-read-sms.git"
+    "url": "https://github.com/maniac-tech/react-native-expo-read-sms.git"
   }
 }
