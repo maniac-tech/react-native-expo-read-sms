@@ -16,7 +16,7 @@ export async function startReadSMS(callback) {
     }
   };
   if (Platform.OS === "android") {
-    const hasPermission = await hasSMSPermission();
+    const hasPermission = await checkIfHasSMSPermission();
     if (hasPermission) {
       RNExpoReadSms.startReadSMS(
         (result) => {
@@ -39,17 +39,20 @@ export async function startReadSMS(callback) {
   }
 }
 
-export const hasSMSPermission = async () => {
+export const checkIfHasSMSPermission = async () => {
   if (Platform.OS === "android" && Platform.Version < 23) {
     return true;
   }
+
   const hasReceiveSmsPermission = await PermissionsAndroid.check(
     PermissionsAndroid.PERMISSIONS.RECEIVE_SMS
   );
   const hasReadSmsPermission = await PermissionsAndroid.check(
     PermissionsAndroid.PERMISSIONS.READ_SMS
   );
+
   if (hasReceiveSmsPermission && hasReadSmsPermission) return true;
+
   return {
     hasReceiveSmsPermission,
     hasReadSmsPermission,
@@ -58,7 +61,7 @@ export const hasSMSPermission = async () => {
 
 export async function requestReadSMSPermission() {
   if (Platform.OS === "android") {
-    const hasPermission = await hasSMSPermission();
+    const hasPermission = await checkIfHasSMSPermission();
     if (hasPermission) return true;
     const status = await PermissionsAndroid.requestMultiple([
       PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
