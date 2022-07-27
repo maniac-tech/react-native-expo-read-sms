@@ -22,6 +22,15 @@ Install this in your managed Expo project by running this command:
 
 3. Everytime an SMS has been received `successCallbackFn` will be called with the sms
 
+## Methods
+| Method name | Description | Params | Returns |
+|-------------|-------------|--------|---------|
+| `startReadSMS` | lorem impsum | callback fn | lorem impsum |
+| `checkIfHasSMSPermission` | lorem impsum | - | lorem impsum |
+| `requestReadSMSPermission` | lorem impsum | - | lorem impsum |
+| `stopReadSMS` | lorem impsum | - | lorem impsum |
+
+
 ### Important Note:
 Ensure your app has `READ_SMS`, and `RECEIVE_SMS`, failing which you'll receive error on calling the function
 
