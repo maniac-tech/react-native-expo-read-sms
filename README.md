@@ -22,8 +22,19 @@ Install this in your managed Expo project by running this command:
 
 3. Everytime an SMS has been received `successCallbackFn` will be called with the sms
 
+## Methods
+| Method name | Description | Params | Returns |
+|-------------|-------------|--------|---------|
+| `checkIfHasSMSPermission` | Function which checks if the application has `READ_SMS` and `RECEIVE_SMS` permissions | - | ```{ hasReceiveSmsPermission: true/false, hasReadSmsPermission: true/false }``` |
+| `requestReadSMSPermission` | Requests `READ_SMS` and `RECEIVE_SMS` permission, if missing | - | Returns `true` if granted, and `false` otherwise |
+| `startReadSMS` | Starts listening for incoming messages. Note: SMS Permissions should be present. | callback fn | Incoming message body |
+
+
 ### Important Note:
 Ensure your app has `READ_SMS`, and `RECEIVE_SMS`, failing which you'll receive error on calling the function
+
+## Support
+Tested on Expo SDK v44 & v45, and Node JS v14
 
 ## License
 MIT
