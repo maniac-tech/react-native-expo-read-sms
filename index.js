@@ -62,7 +62,7 @@ export const checkIfHasSMSPermission = async () => {
 export async function requestReadSMSPermission() {
   if (Platform.OS === "android") {
     const hasPermission = await checkIfHasSMSPermission();
-    if (hasPermission) return true;
+    if (hasPermission.hasReadSmsPermission && hasPermission.hasReceiveSmsPermission) return true;
     const status = await PermissionsAndroid.requestMultiple([
       PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
       PermissionsAndroid.PERMISSIONS.READ_SMS,
