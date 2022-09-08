@@ -22,6 +22,10 @@ Install this in your managed Expo project by running this command:
 
 3. Everytime an SMS has been received `successCallbackFn` will be called with the sms
 
+## Example
+
+You may refer to this sample application for how to use the library: [GitHub Repo](https://github.com/maniac-tech/ExpoReadSMS-TestApp)
+
 ## Methods
 | Method name | Description | Params | Returns |
 |-------------|-------------|--------|---------|
