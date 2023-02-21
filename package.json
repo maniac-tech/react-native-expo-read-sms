@@ -12,10 +12,10 @@
     "read sms",
     "android sms"
   ],
-  "author": "Abhishek Jain",
+  "author": "Abhishek Jain", 
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": "^0.70.5"
   },
   "repository": {
     "type": "git",
