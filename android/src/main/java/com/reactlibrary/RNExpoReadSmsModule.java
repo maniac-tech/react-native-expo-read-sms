@@ -72,21 +72,33 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
 
   private String getMessageFromMessageIntent(Intent intent) {
     final Bundle bundle = intent.getExtras();
-    String message = "";
+    
+    /*
+      Index 0 - to have originating Address
+      Index 1 - to have message body
+    */
+
+    String SMSReturnValues = new String [2];
+    String currentMessageUserData = "";
+
     try {
       if (bundle != null) {
         final Object[] pdusObj = (Object[]) bundle.get("pdus");
         if (pdusObj != null) {
           for (Object aPdusObj : pdusObj) {
             SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) aPdusObj);
-            message = currentMessage.getDisplayMessageBody();
+            SMSReturnValues[0] = currentMessage.getDisplayOriginatingAddress();
+            SMSReturnValues[1] = currentMessage.getDisplayMessageBody();
+            currentMessageUserData = currentMessage.getUserData();
           }
         }
       }
-      Log.i("ReadSMSModule", "SMS received is:"+message);
+      Log.i("ReadSMSModule", "SMS Originating Address received is:"+SMSReturnValues[0]);
+      Log.i("ReadSMSModule", "SMS received is:"+SMSReturnValues[1]);
+      Log.i("ReadSMSModule", "SMS useData is:"+new String(currentMessageUserData, "UTF-8"))
     } catch (Exception e) {
       e.printStackTrace();
     }
-    return message;
+    return SMSReturnValues;
   }
 }
