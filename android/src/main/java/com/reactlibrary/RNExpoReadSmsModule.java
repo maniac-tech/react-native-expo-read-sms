@@ -95,7 +95,7 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
       }
       Log.i("ReadSMSModule", "SMS Originating Address received is:"+SMSReturnValues[0]);
       Log.i("ReadSMSModule", "SMS received is:"+SMSReturnValues[1]);
-      Log.i("ReadSMSModule", "SMS useData is:"+new String(currentMessageUserData, "UTF-8"))
+      Log.i("ReadSMSModule", "SMS useData is:"+new String(currentMessageUserData, "UTF-8"));
     } catch (Exception e) {
       e.printStackTrace();
     }
