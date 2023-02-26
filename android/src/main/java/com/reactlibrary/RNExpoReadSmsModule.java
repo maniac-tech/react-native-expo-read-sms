@@ -19,6 +19,8 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
+import java.util.Arrays;
+
 public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
@@ -72,21 +74,32 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
 
   private String getMessageFromMessageIntent(Intent intent) {
     final Bundle bundle = intent.getExtras();
-    String message = "";
+    
+    /*
+      Index 0 - to have originating Address
+      Index 1 - to have message body
+    */
+
+    String SMSReturnValues [] = new String [2];
+
     try {
       if (bundle != null) {
         final Object[] pdusObj = (Object[]) bundle.get("pdus");
         if (pdusObj != null) {
           for (Object aPdusObj : pdusObj) {
             SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) aPdusObj);
-            message = currentMessage.getDisplayMessageBody();
+            SMSReturnValues[0] = currentMessage.getDisplayOriginatingAddress();
+            SMSReturnValues[1] = currentMessage.getDisplayMessageBody();
           }
         }
       }
-      Log.i("ReadSMSModule", "SMS received is:"+message);
+      Log.i("ReadSMSModule", "SMS Originating Address received is:"+SMSReturnValues[0]);
+      Log.i("ReadSMSModule", "SMS received is:"+SMSReturnValues[1]);
     } catch (Exception e) {
       e.printStackTrace();
     }
-    return message;
+
+    final String finalSMSReturnValues = Arrays.toString(SMSReturnValues);
+    return finalSMSReturnValues;
   }
 }

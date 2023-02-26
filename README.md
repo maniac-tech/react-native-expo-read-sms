@@ -31,7 +31,7 @@ You may refer to this sample application for how to use the library: [GitHub Rep
 |-------------|-------------|--------|---------|
 | `checkIfHasSMSPermission` | Function which checks if the application has `READ_SMS` and `RECEIVE_SMS` permissions | - | ```{ hasReceiveSmsPermission: true/false, hasReadSmsPermission: true/false }``` |
 | `requestReadSMSPermission` | Requests `READ_SMS` and `RECEIVE_SMS` permission, if missing | - | Returns `true` if granted, and `false` otherwise |
-| `startReadSMS` | Starts listening for incoming messages. Note: SMS Permissions should be present. | callback fn | Incoming message body |
+| `startReadSMS` | Starts listening for incoming messages. Note: SMS Permissions should be present. | callback fn | Return a string with message orginating address, and message body. Example: `[+919999999999, this is a sample message body]` |
 
 
 ### Important Note:
