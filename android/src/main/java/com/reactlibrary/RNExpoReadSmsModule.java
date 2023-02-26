@@ -70,7 +70,7 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  private String getMessageFromMessageIntent(Intent intent) {
+  private String [] getMessageFromMessageIntent(Intent intent) {
     final Bundle bundle = intent.getExtras();
     
     /*
@@ -78,8 +78,7 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
       Index 1 - to have message body
     */
 
-    String SMSReturnValues = new String [2];
-    String currentMessageUserData = "";
+    String SMSReturnValues [] = new String [2];
 
     try {
       if (bundle != null) {
@@ -89,13 +88,13 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
             SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) aPdusObj);
             SMSReturnValues[0] = currentMessage.getDisplayOriginatingAddress();
             SMSReturnValues[1] = currentMessage.getDisplayMessageBody();
-            currentMessageUserData = currentMessage.getUserData();
+            byte currentMessageUserData [] = currentMessage.getUserData();
+            Log.i("ReadSMSModule", "SMS useData is:"+new String(currentMessageUserData, "UTF-8"));
           }
         }
       }
       Log.i("ReadSMSModule", "SMS Originating Address received is:"+SMSReturnValues[0]);
       Log.i("ReadSMSModule", "SMS received is:"+SMSReturnValues[1]);
-      Log.i("ReadSMSModule", "SMS useData is:"+new String(currentMessageUserData, "UTF-8"));
     } catch (Exception e) {
       e.printStackTrace();
     }
