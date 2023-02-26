@@ -88,8 +88,6 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
             SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) aPdusObj);
             SMSReturnValues[0] = currentMessage.getDisplayOriginatingAddress();
             SMSReturnValues[1] = currentMessage.getDisplayMessageBody();
-            byte currentMessageUserData [] = currentMessage.getUserData();
-            Log.i("ReadSMSModule", "SMS useData is:"+new String(currentMessageUserData, "UTF-8"));
           }
         }
       }
