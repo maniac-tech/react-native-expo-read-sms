@@ -19,6 +19,8 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
+import java.util.Arrays;
+
 public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
 
   private final ReactApplicationContext reactContext;
@@ -70,7 +72,7 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
     }
   }
 
-  private String [] getMessageFromMessageIntent(Intent intent) {
+  private String getMessageFromMessageIntent(Intent intent) {
     final Bundle bundle = intent.getExtras();
     
     /*
@@ -96,6 +98,8 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
     } catch (Exception e) {
       e.printStackTrace();
     }
-    return SMSReturnValues;
+
+    final String finalSMSReturnValues = Arrays.toString(SMSReturnValues);
+    return finalSMSReturnValues;
   }
 }
