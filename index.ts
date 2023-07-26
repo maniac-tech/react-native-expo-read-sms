@@ -67,8 +67,8 @@ export const requestSMSPermissions: RequestSMSPermissions = async (permissions: 
     if (Platform.OS === "android") {
       const permissionsToAsk: Permission[] = [];
       for (const [key, value] of Object.entries(permissions)) {
-        if (value) permissionsToAsk.push(PermissionsAndroid.PERMISSIONS[key])
-      }
+        if (!value) permissionsToAsk.push(PermissionsAndroid.PERMISSIONS[key])
+      };
       await PermissionsAndroid.requestMultiple(permissionsToAsk);
     };
   } catch (error) {
