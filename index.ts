@@ -15,21 +15,19 @@ export const startReadSMS: StartReadSMS = async (callback) => {
   if (Platform.OS === "android") {
     const permissions = await checkIfHasSMSPermission();
     if (!permissions.READ_SMS || !permissions.RECEIVE_SMS) await requestSMSPermissions(permissions)
-    else {
-      RNExpoReadSms.startReadSMS(
-        (result) => {
-          new NativeEventEmitter(RNExpoReadSms).addListener(
-            "received_sms",
-            (sms) => {
-              callback("success", sms);
-            }
-          );
-        },
-        (error) => {
-          callback("error", "", error);
-        }
-      );
-    }
+    RNExpoReadSms.startReadSMS(
+      (result) => {
+        new NativeEventEmitter(RNExpoReadSms).addListener(
+          "received_sms",
+          (sms) => {
+            callback("success", sms);
+          }
+        );
+      },
+      (error) => {
+        callback("error", "", error);
+      }
+    );
   }
 }
 
