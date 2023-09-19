@@ -14,7 +14,7 @@ export default RNExpoReadSms;
 export const startReadSMS: StartReadSMS = async (callback) => {
   if (Platform.OS === "android") {
     const permissions = await checkIfHasSMSPermission();
-    if (!permissions.READ_SMS || !permissions.RECEIVE_SMS) await requestSMSPermissions(permissions)
+    if (!permissions.READ_SMS || !permissions.RECEIVE_SMS) await requestSMSPermissions(permissions);
     RNExpoReadSms.startReadSMS(
       (result) => {
         new NativeEventEmitter(RNExpoReadSms).addListener(
@@ -29,7 +29,7 @@ export const startReadSMS: StartReadSMS = async (callback) => {
       }
     );
   }
-}
+};
 
 export function stopReadSMS() {
   if (Platform.OS === "android") {
@@ -45,19 +45,14 @@ export const checkIfHasSMSPermission: CheckIfHasSMSPermission = async () => {
 
   if (Platform.OS === "android" && Platform.Version < 23) return hasPermissions;
 
-  const RECEIVE_SMS = await PermissionsAndroid.check(
+  hasPermissions.RECEIVE_SMS = await PermissionsAndroid.check(
     PermissionsAndroid.PERMISSIONS.RECEIVE_SMS
   );
-  const READ_SMS = await PermissionsAndroid.check(
+  hasPermissions.READ_SMS = await PermissionsAndroid.check(
     PermissionsAndroid.PERMISSIONS.READ_SMS
   );
 
-  if (RECEIVE_SMS && READ_SMS) return hasPermissions;
-
-  return {
-    RECEIVE_SMS,
-    READ_SMS,
-  };
+  return hasPermissions;
 };
 
 export const requestSMSPermissions: RequestSMSPermissions = async (permissions: SMSPermissions) => {
@@ -65,7 +60,7 @@ export const requestSMSPermissions: RequestSMSPermissions = async (permissions: 
     if (Platform.OS === "android") {
       const permissionsToAsk: Permission[] = [];
       for (const [key, value] of Object.entries(permissions)) {
-        if (!value) permissionsToAsk.push(PermissionsAndroid.PERMISSIONS[key])
+        if (!value) permissionsToAsk.push(PermissionsAndroid.PERMISSIONS[key]);
       };
       await PermissionsAndroid.requestMultiple(permissionsToAsk);
     };
