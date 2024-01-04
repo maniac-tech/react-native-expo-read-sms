@@ -15,7 +15,7 @@
   "author": "Abhishek Jain",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.69.9"
+    "react-native": "^0.70.8"
   },
   "repository": {
     "type": "git",
