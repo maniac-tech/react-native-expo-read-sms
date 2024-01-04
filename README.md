@@ -38,7 +38,7 @@ You may refer to this sample application for how to use the library: [GitHub Rep
 Ensure your app has `READ_SMS`, and `RECEIVE_SMS`, failing which you'll receive error on calling the function
 
 ## Support
-Tested on Expo SDK v44 & v45, and Node JS v14
+Tested on Expo SDK v44, v45 & v47 and Node JS v14
 
 ## License
 MIT
