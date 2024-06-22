@@ -1,6 +1,6 @@
 {
   "name": "@maniac-tech/react-native-expo-read-sms",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Library to read incoming SMS in Android for Expo (React Native)",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "author": "Abhishek Jain",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.70.8"
+    "react-native": "^0.71.3"
   },
   "repository": {
     "type": "git",
