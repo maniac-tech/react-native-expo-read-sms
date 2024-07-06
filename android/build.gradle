@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.facebook.react:react-native:0.72.10'
+    implementation 'com.facebook.react:react-native:0.73.6'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
   
