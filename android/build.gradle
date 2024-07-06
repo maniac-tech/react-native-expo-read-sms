@@ -1,9 +1,9 @@
 
 buildscript {
     repositories {
-        mavenCentral();
-        jcenter();
-        google();
+        mavenCentral()
+        jcenter()
+        google()
     }
 
     dependencies {
@@ -14,10 +14,10 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 33
     buildToolsVersion "33.0.0"
-
+    namespace "com.reactlibrary"
     defaultConfig {
+        compileSdk 33
         minSdkVersion 33
         targetSdkVersion 33
         versionCode 1
