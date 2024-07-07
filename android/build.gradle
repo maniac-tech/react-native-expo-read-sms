@@ -14,12 +14,11 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    buildToolsVersion "33.0.0"
     namespace "com.reactlibrary"
     defaultConfig {
-        compileSdk 33
-        minSdkVersion 33
-        targetSdkVersion 33
+        compileSdk 34
+        minSdkVersion 34
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
     }
@@ -34,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.facebook.react:react-native:0.72.10'
+    implementation 'com.facebook.react:react-native:0.73.6'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
   
