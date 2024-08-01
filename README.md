@@ -1,5 +1,15 @@
 
-# react-native-expo-read-sms / [Webpage](http://maniac-tech.com/expo-read-sms/)
+<h1 align="center">
+  <br>
+  <a href="https://maniac-tech.com/images/expo-read-sms.png" alt="Markdownify" width="200"></a>
+  <br>
+  react-native-expo-read-sms
+  <br>
+</h1>
+
+<h4 align="center">Reading SMS made simple in <a href="https://reactnative.dev/" target="_blank">react-native</a> on Android</h4>
+
+<!-- # react-native-expo-read-sms / [Webpage](http://maniac-tech.com/expo-read-sms/) -->
 
 ## Maintainers
 
@@ -42,3 +52,7 @@ Tested on Expo SDK v44, v45 & v47, v48, v49, v50 and Node JS v18
 
 ## License
 MIT
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-url]: https://github.com/maniac-tech/react-native-expo-read-sms/network/members
