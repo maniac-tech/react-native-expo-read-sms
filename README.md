@@ -1,7 +1,9 @@
 
 <h1 align="center">
   <br>
-  <a href="https://maniac-tech.com/images/expo-read-sms.png" alt="Markdownify" width="200"></a>
+  <a href="https://maniac-tech.com/expo-read-sms/" alt="Markdownify" width="200">
+    <img src="https://maniac-tech.com/images/expo-read-sms.png" height="300px">
+  </a>
   <br>
   react-native-expo-read-sms
   <br>
