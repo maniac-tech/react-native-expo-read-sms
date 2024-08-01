@@ -9,13 +9,18 @@
   <br>
 </h1>
 
-<h4 align="center">Reading SMS made simple in <a href="https://reactnative.dev/" target="_blank">react-native</a> on Android</h4>
+<h4 align="center">Reading SMS made simple in <a href="https://reactnative.dev/" target="_blank">React Native</a> on Android</h4>
 
-<!-- # react-native-expo-read-sms / [Webpage](http://maniac-tech.com/expo-read-sms/) -->
+<p align="center">
+  <a href="https://react-native-expo-read-sms.vercel.app/docs/category/getting-started">Documentation</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#example">Example</a> •
+  <a href="#methods">Methods</a> •
+  <a href="#license">License</a>
+</p>
 
-## Maintainers
-
-[maniac-tech](https://github.com/maniac-tech/) Active maintainer
+<img src="https://maniac-tech.com/expo-read-sms/static/images/code.png" height="600px">
 
 ## Installation
 
@@ -55,6 +60,5 @@ Tested on Expo SDK v44, v45 & v47, v48, v49, v50 and Node JS v18
 ## License
 MIT
 
-<!-- MARKDOWN LINKS & IMAGES -->
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/maniac-tech/react-native-expo-read-sms/network/members
+## Maintainers
+[maniac-tech](https://github.com/maniac-tech/) Active maintainer
