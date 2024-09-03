@@ -1,6 +1,6 @@
 {
   "name": "@maniac-tech/react-native-expo-read-sms",
-  "version": "8.0.1-alpha",
+  "version": "8.0.2-alpha",
   "description": "Library to read incoming SMS in Android for Expo (React Native)",
   "main": "index.js",
   "scripts": {

@@ -51,7 +51,7 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
           }
         };
         String SMS_RECEIVED_ACTION = "android.provider.Telephony.SMS_RECEIVED";
-        if(Build.VERSION.SDK_INT >= 34 && getApplicationInfo().targetSdkVersion >= 34) {
+        if(Build.VERSION.SDK_INT >= 34) {
           reactContext.registerReceiver(msgReceiver, new IntentFilter(SMS_RECEIVED_ACTION), Context.RECEIVER_EXPORTED);
         } else {
           reactContext.registerReceiver(msgReceiver, new IntentFilter(SMS_RECEIVED_ACTION));
