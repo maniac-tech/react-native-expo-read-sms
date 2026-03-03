@@ -1,8 +1,6 @@
-
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
         google()
     }
 
@@ -13,17 +11,31 @@ buildscript {
 
 apply plugin: 'com.android.library'
 
+// Helper to safely read properties from the root project,
+// falling back to a default value if not defined.
+def safeExtGet(prop, fallback) {
+    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
+
 android {
     namespace "com.reactlibrary"
+
+    compileSdkVersion safeExtGet('compileSdkVersion', 34)
+
     defaultConfig {
-        compileSdk 34
-        minSdkVersion 34
-        targetSdkVersion 34
+        minSdkVersion safeExtGet('minSdkVersion', 21)
+        targetSdkVersion safeExtGet('targetSdkVersion', 34)
         versionCode 1
         versionName "1.0"
     }
+
     lintOptions {
         abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -33,7 +45,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.facebook.react:react-native:0.73.6'
+    // Use the host app's React Native version instead of a hardcoded one.
+    // This ensures compatibility across SDK 51–54 (RN 0.74–0.81) and beyond.
+    implementation 'com.facebook.react:react-native:+'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
-  

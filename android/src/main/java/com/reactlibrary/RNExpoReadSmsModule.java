@@ -1,4 +1,3 @@
-
 package com.reactlibrary;
 
 import android.Manifest;
@@ -7,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
@@ -39,9 +39,10 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void startReadSMS(final Callback success, final Callback error) {
-    try{
+    try {
       if (ContextCompat.checkSelfPermission(reactContext, Manifest.permission.RECEIVE_SMS) == PackageManager.PERMISSION_GRANTED
               && ContextCompat.checkSelfPermission(reactContext, Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED) {
+
         msgReceiver = new BroadcastReceiver() {
           @Override
           public void onReceive(Context context, Intent intent) {
@@ -49,18 +50,24 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
                     .emit("received_sms", getMessageFromMessageIntent(intent));
           }
         };
+
         String SMS_RECEIVED_ACTION = "android.provider.Telephony.SMS_RECEIVED";
-        if(Build.VERSION.SDK_INT >= 34 && getApplicationInfo().targetSdkVersion >= 34) {
+
+        // Android 14 (API 34)+ requires explicit RECEIVER_EXPORTED or RECEIVER_NOT_EXPORTED flag
+        // when registering a dynamic BroadcastReceiver. SMS_RECEIVED is a system broadcast,
+        // so RECEIVER_EXPORTED is the correct flag here.
+        if (Build.VERSION.SDK_INT >= 34 && getReactApplicationContext().getApplicationInfo().targetSdkVersion >= 34) {
           reactContext.registerReceiver(msgReceiver, new IntentFilter(SMS_RECEIVED_ACTION), Context.RECEIVER_EXPORTED);
         } else {
           reactContext.registerReceiver(msgReceiver, new IntentFilter(SMS_RECEIVED_ACTION));
         }
+
         success.invoke("Start Read SMS successfully");
       } else {
         // Permission has not been granted
         error.invoke("Required RECEIVE_SMS and READ_SMS permission");
       }
-    } catch (Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
   }
@@ -70,6 +77,7 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
     try {
       if (reactContext != null && msgReceiver != null) {
         reactContext.unregisterReceiver(msgReceiver);
+        msgReceiver = null;
       }
     } catch (Exception e) {
       e.printStackTrace();
@@ -78,13 +86,12 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
 
   private String getMessageFromMessageIntent(Intent intent) {
     final Bundle bundle = intent.getExtras();
-    
-    /*
-      Index 0 - to have originating Address
-      Index 1 - to have message body
-    */
 
-    String SMSReturnValues [] = new String [2];
+    /*
+      Index 0 - originating address (phone number)
+      Index 1 - message body
+    */
+    String[] SMSReturnValues = new String[2];
 
     try {
       if (bundle != null) {
@@ -97,13 +104,12 @@ public class RNExpoReadSmsModule extends ReactContextBaseJavaModule {
           }
         }
       }
-      Log.i("ReadSMSModule", "SMS Originating Address received is:"+SMSReturnValues[0]);
-      Log.i("ReadSMSModule", "SMS received is:"+SMSReturnValues[1]);
+      Log.i("ReadSMSModule", "SMS Originating Address: " + SMSReturnValues[0]);
+      Log.i("ReadSMSModule", "SMS Body: " + SMSReturnValues[1]);
     } catch (Exception e) {
       e.printStackTrace();
     }
 
-    final String finalSMSReturnValues = Arrays.toString(SMSReturnValues);
-    return finalSMSReturnValues;
+    return Arrays.toString(SMSReturnValues);
   }
 }
