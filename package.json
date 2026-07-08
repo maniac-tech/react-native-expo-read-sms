@@ -4,7 +4,7 @@
   "description": "Library to read incoming SMS in Android for Expo (React Native)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "react-native",
@@ -22,6 +22,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/maniac-tech/react-native-expo-read-sms.git"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.29.7",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
   },
   "overrides": {
     "shell-quote": "^1.8.4",
