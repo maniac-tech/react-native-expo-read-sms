@@ -17,6 +17,7 @@
   <a href="#usage">Usage</a> •
   <a href="#example">Example</a> •
   <a href="#methods">Methods</a> •
+  <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
 </p>
 
@@ -56,6 +57,24 @@ Ensure your app has `READ_SMS`, and `RECEIVE_SMS`, failing which you'll receive 
 
 ## Support
 Tested on Expo SDK v44, v45 & v47, v48, v49, v50 and Node JS v18
+
+## Contributing
+
+Contributions are welcome! To get set up:
+
+```sh
+$ git clone https://github.com/maniac-tech/react-native-expo-read-sms.git
+$ cd react-native-expo-read-sms
+$ npm install
+```
+
+Run the test suite with:
+
+```sh
+$ npm test
+```
+
+Please make sure the test suite passes before submitting a pull request.
 
 ## License
 MIT
